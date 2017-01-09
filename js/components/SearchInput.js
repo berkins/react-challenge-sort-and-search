@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
 
-export default ({text, searchUser}) => {
-  let input;
+export default class SearchInput extends Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-  return (
-    <div className="col-xs-12">
-      <div className="form-group">
-        <input 
-          type="text" 
-          className="form-control" 
-          placeholder="Search" 
-          value={text} 
-          ref={node => input = node} 
-          onChange={() => {
-            searchUser(input.value); 
-            input.value = '';
-          }} 
-        />
+  handleChange(e) { this.props.searchUser(e.target.value) }
+
+  render() {
+    return (
+      <div className="col-xs-12">
+        <div className="form-group">
+          <input 
+            type="text" 
+            className="form-control" 
+            placeholder="Search" 
+            onChange={this.handleChange}
+          />
+        </div>
       </div>
-    </div>
-  );
+    )
+  }
 }
