@@ -1,26 +1,5 @@
 import fetch from 'isomorphic-fetch';
 
-export const selectActiveUser = (id) => {
-  return {
-    type: 'SET_ACTIVE',
-    id
-  }
-}
-
-export const searchUser = (text) => {
-  return {
-    type: 'SEARCH',
-    text
-  }
-}
-
-export const sortUsers = (sorted) => {
-  return {
-    type: 'SORT',
-    sorted
-  }
-}
-
 export const requestUsers = () => {
   return {
     type: 'REQUEST_USERS'

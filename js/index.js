@@ -6,7 +6,6 @@ import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 
-import { selectActiveUser, fetchUsers } from './actions';
 import reducers from './reducers';
 import App from './App';
 
@@ -19,8 +18,6 @@ const store = createStore(
     logger
   )
 );
-
-store.dispatch(fetchUsers());
 
 render(
   <Provider store={store}>

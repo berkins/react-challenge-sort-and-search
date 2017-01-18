@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectActiveUser } from '../actions';
+
+import { selectActiveUser, fetchUsers } from './actions';
 
 import UserData from './UserData';
 
@@ -9,8 +10,12 @@ class UserList extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchUsers();
+  }
+
   render() {
-    const {users, isFetching, selectActive} = this.props;
+    const {users, isFetching, selectActiveUser} = this.props;
 
     if (isFetching) {
       return (
@@ -33,7 +38,7 @@ class UserList extends Component {
         <tbody>
           { 
             users.map((user) => 
-              <UserData key={user.id} user={user} onClick={() => selectActive(user.id)} />
+              <UserData key={user.id} user={user} onClick={() => selectActiveUser(user.id)} />
             ) 
           }
         </tbody>
@@ -55,11 +60,5 @@ export default connect(
       isFetching: state.users.isFetching
     }
   },
-  dispatch => {
-    return {
-      selectActive: id => {
-        dispatch(selectActiveUser(id))
-      }
-    }
-  }
+  { selectActiveUser, fetchUsers }
 )(UserList)

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { searchUser } from '../actions';
+import { searchUser } from './actions';
 
 class SearchInput extends Component {
   constructor(props) {
@@ -29,9 +29,5 @@ class SearchInput extends Component {
 
 export default connect(
   null,
-  dispatch => ({
-    searchUser: text => {
-      dispatch(searchUser(text))
-    }
-  })
+  { searchUser }
 )(SearchInput)

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { sortUsers } from '../actions';
+import { sortUsers } from './actions';
 
 class SortButtons extends Component {
   constructor(props) {
