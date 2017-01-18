@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class SearchInput extends Component {
+import { searchUser } from '../actions';
+
+class SearchInput extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -23,3 +26,12 @@ export default class SearchInput extends Component {
     )
   }
 }
+
+export default connect(
+  null,
+  dispatch => ({
+    searchUser: text => {
+      dispatch(searchUser(text))
+    }
+  })
+)(SearchInput)
